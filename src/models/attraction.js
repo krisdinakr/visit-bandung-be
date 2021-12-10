@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ENUM('CULTURE & ART', 'SHOPPING', 'NATURE', 'CULINARY', 'HISTORY & HERITAGE'),
       allowNull: false,
     },
+    subCategory: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     slug: {
       type: DataTypes.STRING,
       allowNull: false,

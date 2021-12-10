@@ -16,6 +16,10 @@ module.exports = {
         type: Sequelize.ENUM('CULTURE & ART', 'SHOPPING', 'NATURE', 'CULINARY', 'HISTORY & HERITAGE'),
         allowNull: false,
       },
+      subCategory: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       slug: {
         type: Sequelize.STRING,
         allowNull: false,
