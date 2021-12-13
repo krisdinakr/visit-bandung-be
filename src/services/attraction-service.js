@@ -1,5 +1,5 @@
 import { Attraction } from '../models';
-import { BadRequest } from '../utils/errors';
+import { NotFound } from '../utils/errors';
 import createSlug from '../utils/create-slug';
 
 class AttractionService {
@@ -10,7 +10,7 @@ class AttractionService {
       where: { slug },
     });
 
-    if (result === null) throw new BadRequest('Attraction Not Found');
+    if (result === null) throw new NotFound('Attraction Not Found');
 
     return result;
   };
@@ -28,6 +28,20 @@ class AttractionService {
     });
 
     return result;
+  };
+
+  static delete = async (id) => {
+    const targetedAttraction = await Attraction.findOne({
+      where: { id },
+    });
+
+    if (targetedAttraction === null) throw new NotFound('Attraction Not Found');
+
+    await Attraction.destroy({
+      where: { id },
+    });
+
+    return 'deleted';
   };
 }
 

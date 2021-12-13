@@ -37,6 +37,17 @@ class AttractionController {
       return next(err);
     }
   };
+
+  static deleteAttraction = async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const result = await AttractionService.delete(id);
+      return res.status(200).json(Response.success(null, null, result));
+    } catch (err) {
+      console.log('err', err);
+      return next(err);
+    }
+  };
 }
 
 export default AttractionController;
