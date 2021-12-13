@@ -1,5 +1,5 @@
 import { Attraction } from '../models';
-import ERRORS from '../configs/errors';
+import { BadRequest } from '../utils/errors';
 
 class AttractionService {
   static getAll = () => Attraction.findAll();
@@ -9,7 +9,7 @@ class AttractionService {
       where: { slug },
     });
 
-    if (result === null) throw new Error(ERRORS.ATTRACTION_NOT_FOUND);
+    if (result === null) throw new BadRequest('Attraction Not Found');
 
     return result;
   };
