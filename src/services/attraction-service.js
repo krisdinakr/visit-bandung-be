@@ -67,6 +67,15 @@ class AttractionService {
   static getById = (id) => Attraction.findOne({
     where: { id },
   });
+
+  static getByCategory = async (category) => {
+    const formattedCategory = category.toUpperCase().replace(/-/gm, ' & ');
+    const result = await Attraction.findAll({
+      where: { category: formattedCategory },
+    });
+
+    return result;
+  };
 }
 
 export default AttractionService;

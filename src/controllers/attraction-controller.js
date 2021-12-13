@@ -64,6 +64,17 @@ class AttractionController {
       return next(err);
     }
   };
+
+  static getAttractionByCategory = async (req, res, next) => {
+    try {
+      const { category } = req.params;
+      const result = await AttractionService.getByCategory(category);
+      return res.status(200).json(Response.success(result));
+    } catch (err) {
+      console.log('err', err);
+      return next(err);
+    }
+  };
 }
 
 export default AttractionController;
