@@ -31,9 +31,7 @@ class AttractionService {
   };
 
   static delete = async (id) => {
-    const targetedAttraction = await Attraction.findOne({
-      where: { id },
-    });
+    const targetedAttraction = await this.getById(id);
 
     if (targetedAttraction === null) throw new NotFound('Attraction Not Found');
 
@@ -43,6 +41,32 @@ class AttractionService {
 
     return 'deleted';
   };
+
+  static update = async ({
+    id, name, category, subCategory, images, description,
+  }) => {
+    const targetedAttraction = await this.getById(id);
+
+    if (targetedAttraction === null) throw new NotFound('Attraction Not Found');
+
+    const updatedAttraction = await Attraction.update({
+      name,
+      category,
+      subCategory,
+      images,
+      slug: name && createSlug(name),
+      description,
+    }, {
+      where: { id },
+      returning: true,
+    });
+
+    return updatedAttraction[1];
+  };
+
+  static getById = (id) => Attraction.findOne({
+    where: { id },
+  });
 }
 
 export default AttractionService;

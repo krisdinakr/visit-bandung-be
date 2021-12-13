@@ -48,6 +48,22 @@ class AttractionController {
       return next(err);
     }
   };
+
+  static updateAttraction = async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const {
+        name, category, subCategory, images, description,
+      } = req.body;
+      const result = await AttractionService.update({
+        id, name, category, subCategory, images, description,
+      });
+      return res.status(200).json(Response.success(result, null, 'updated'));
+    } catch (err) {
+      console.log('err', err);
+      return next(err);
+    }
+  };
 }
 
 export default AttractionController;
