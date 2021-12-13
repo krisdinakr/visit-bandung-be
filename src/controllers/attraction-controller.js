@@ -22,6 +22,21 @@ class AttractionController {
       return next(err);
     }
   };
+
+  static create = async (req, res, next) => {
+    try {
+      const {
+        name, category, subCategory, images, description,
+      } = req.body;
+      const result = await AttractionService.create({
+        name, category, subCategory, images, description,
+      });
+      return res.status(201).json(Response.success(result));
+    } catch (err) {
+      console.log('err', err);
+      return next(err);
+    }
+  };
 }
 
 export default AttractionController;
