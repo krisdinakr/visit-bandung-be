@@ -7,8 +7,8 @@ const RouteParams = {
 const ROUTES = {
   ROOT: '/',
   ATTRACTIONS: '/attractions',
-  ATTRACTIONS_SLUG: `/attractions/${RouteParams.SLUG}`,
   ATTRACTIONS_ID: `/attractions/${RouteParams.ID}`,
+  ATTRACTIONS_SLUG: `/attractions/slug/${RouteParams.SLUG}`,
   ATTRACTIONS_CATEGORY: `/attractions/category/${RouteParams.CATEGORY}`,
 };
 

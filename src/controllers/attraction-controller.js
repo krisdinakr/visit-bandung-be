@@ -12,6 +12,17 @@ class AttractionController {
     }
   };
 
+  static getById = async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const result = await AttractionService.getById(id);
+      return res.status(200).json(Response.success(result));
+    } catch (err) {
+      console.log('err', err);
+      return next(err);
+    }
+  }
+
   static getBySlug = async (req, res, next) => {
     try {
       const { slug } = req.params;
