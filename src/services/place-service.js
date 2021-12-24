@@ -1,16 +1,16 @@
-import { Attraction } from '../models';
+import { Place } from '../models';
 import { NotFound } from '../utils/errors';
 import createSlug from '../utils/create-slug';
 
-class AttractionService {
-  static getAll = () => Attraction.findAll();
+class PlaceService {
+  static getAll = () => Place.findAll();
 
   static getBySlug = async (slug) => {
-    const result = await Attraction.findOne({
+    const result = await Place.findOne({
       where: { slug },
     });
 
-    if (result === null) throw new NotFound('Attraction Not Found');
+    if (result === null) throw new NotFound('Not Found');
 
     return result;
   };
@@ -18,7 +18,7 @@ class AttractionService {
   static create = async ({
     name, category, subCategory, images, description,
   }) => {
-    const result = await Attraction.create({
+    const result = await Place.create({
       name,
       category,
       subCategory,
@@ -31,11 +31,11 @@ class AttractionService {
   };
 
   static delete = async (id) => {
-    const targetedAttraction = await this.getById(id);
+    const targetedPlace = await this.getById(id);
 
-    if (targetedAttraction === null) throw new NotFound('Attraction Not Found');
+    if (targetedPlace === null) throw new NotFound('Not Found');
 
-    await Attraction.destroy({
+    await Place.destroy({
       where: { id },
     });
 
@@ -45,11 +45,11 @@ class AttractionService {
   static update = async ({
     id, name, category, subCategory, images, description,
   }) => {
-    const targetedAttraction = await this.getById(id);
+    const targetedPlace = await this.getById(id);
 
-    if (targetedAttraction === null) throw new NotFound('Attraction Not Found');
+    if (targetedPlace === null) throw new NotFound('Not Found');
 
-    const updatedAttraction = await Attraction.update({
+    const updatedPlace = await Place.update({
       name,
       category,
       subCategory,
@@ -61,16 +61,16 @@ class AttractionService {
       returning: true,
     });
 
-    return updatedAttraction[1];
+    return updatedPlace[1];
   };
 
-  static getById = (id) => Attraction.findOne({
+  static getById = (id) => Place.findOne({
     where: { id },
   });
 
   static getByCategory = async (category) => {
     const formattedCategory = category.toUpperCase().replace(/-/gm, ' & ');
-    const result = await Attraction.findAll({
+    const result = await Place.findAll({
       where: { category: formattedCategory },
     });
 
@@ -78,4 +78,4 @@ class AttractionService {
   };
 }
 
-export default AttractionService;
+export default PlaceService;
