@@ -1,10 +1,10 @@
-import AttractionService from '../services/attraction-service';
+import PlaceService from '../services/place-service';
 import Response from '../utils/response';
 
-class AttractionController {
+class PlaceController {
   static getAll = async (req, res, next) => {
     try {
-      const result = await AttractionService.getAll();
+      const result = await PlaceService.getAll();
       return res.status(200).json(Response.success(result));
     } catch (err) {
       console.log('err', err);
@@ -15,7 +15,7 @@ class AttractionController {
   static getById = async (req, res, next) => {
     try {
       const { id } = req.params;
-      const result = await AttractionService.getById(id);
+      const result = await PlaceService.getById(id);
       return res.status(200).json(Response.success(result));
     } catch (err) {
       console.log('err', err);
@@ -26,7 +26,7 @@ class AttractionController {
   static getBySlug = async (req, res, next) => {
     try {
       const { slug } = req.params;
-      const result = await AttractionService.getBySlug(slug);
+      const result = await PlaceService.getBySlug(slug);
       return res.status(200).json(Response.success(result));
     } catch (err) {
       console.log('err', err);
@@ -39,7 +39,7 @@ class AttractionController {
       const {
         name, category, subCategory, images, description,
       } = req.body;
-      const result = await AttractionService.create({
+      const result = await PlaceService.create({
         name, category, subCategory, images, description,
       });
       return res.status(201).json(Response.success(result));
@@ -52,7 +52,7 @@ class AttractionController {
   static deleteAttraction = async (req, res, next) => {
     try {
       const { id } = req.params;
-      const result = await AttractionService.delete(id);
+      const result = await PlaceService.delete(id);
       return res.status(200).json(Response.success(null, null, result));
     } catch (err) {
       console.log('err', err);
@@ -66,7 +66,7 @@ class AttractionController {
       const {
         name, category, subCategory, images, description,
       } = req.body;
-      const result = await AttractionService.update({
+      const result = await PlaceService.update({
         id, name, category, subCategory, images, description,
       });
       return res.status(200).json(Response.success(result, null, 'updated'));
@@ -79,7 +79,7 @@ class AttractionController {
   static getAttractionByCategory = async (req, res, next) => {
     try {
       const { category } = req.params;
-      const result = await AttractionService.getByCategory(category);
+      const result = await PlaceService.getByCategory(category);
       return res.status(200).json(Response.success(result));
     } catch (err) {
       console.log('err', err);
@@ -88,4 +88,4 @@ class AttractionController {
   };
 }
 
-export default AttractionController;
+export default PlaceController;
