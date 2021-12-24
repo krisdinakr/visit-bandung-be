@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Attraction', {
+    await queryInterface.createTable('Place', {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -13,12 +13,11 @@ module.exports = {
         allowNull: false,
       },
       category: {
-        type: Sequelize.ENUM('CULTURE & ART', 'SHOPPING', 'NATURE', 'CULINARY', 'HISTORY & HERITAGE'),
+        type: Sequelize.ENUM('CULTURE & ART', 'SHOPPING', 'NATURE', 'CULINARY', 'HISTORY & HERITAGE', 'ATTRACTION'),
         allowNull: false,
       },
       subCategory: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       slug: {
         type: Sequelize.STRING,
@@ -43,6 +42,6 @@ module.exports = {
     });
   },
   down: async (queryInterface) => {
-    await queryInterface.dropTable('Attraction');
+    await queryInterface.dropTable('Place');
   },
 };

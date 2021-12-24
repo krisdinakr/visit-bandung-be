@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface) => {
-    await queryInterface.bulkInsert('Attraction', [
+    await queryInterface.bulkInsert('Place', [
       {
         id: '29af5789-cbe7-4408-b8f6-e5919545d197',
         name: 'NuArt Sculpture Park',
@@ -40,6 +40,6 @@ module.exports = {
   },
 
   down: async (queryInterface) => {
-    await queryInterface.bulkDelete('Attraction', null, {});
+    await queryInterface.bulkDelete('Place', null, {});
   },
 };

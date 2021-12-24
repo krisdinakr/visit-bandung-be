@@ -1,11 +1,11 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Attraction extends Model {
+  class Place extends Model {
     static associate() { }
   }
 
-  Attraction.init({
+  Place.init({
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -18,12 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     category: {
-      type: DataTypes.ENUM('CULTURE & ART', 'SHOPPING', 'NATURE', 'CULINARY', 'HISTORY & HERITAGE'),
+      type: DataTypes.ENUM('CULTURE & ART', 'SHOPPING', 'NATURE', 'CULINARY', 'HISTORY & HERITAGE', 'ATTRACTION'),
       allowNull: false,
     },
     subCategory: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     slug: {
       type: DataTypes.STRING,
@@ -39,8 +38,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'Attraction',
-    tableName: 'Attraction',
+    modelName: 'Place',
+    tableName: 'Place',
   });
-  return Attraction;
+  return Place;
 };
