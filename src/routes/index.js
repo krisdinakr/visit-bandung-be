@@ -6,10 +6,10 @@ const RouteParams = {
 
 const ROUTES = {
   ROOT: '/',
-  ATTRACTIONS: '/attractions',
-  ATTRACTIONS_ID: `/attractions/${RouteParams.ID}`,
-  ATTRACTIONS_SLUG: `/attractions/slug/${RouteParams.SLUG}`,
-  ATTRACTIONS_CATEGORY: `/attractions/category/${RouteParams.CATEGORY}`,
+  PLACES: '/places',
+  PLACES_ID: `/places/${RouteParams.ID}`,
+  PLACES_SLUG: `/places/slug/${RouteParams.SLUG}`,
+  PLACES_CATEGORY: `/places/category/${RouteParams.CATEGORY}`,
 };
 
 export default ROUTES;
