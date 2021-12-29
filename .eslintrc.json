@@ -4,8 +4,15 @@
         "node": true
     },
     "extends": [
-        "airbnb"
+        "airbnb-base"
     ],
+    "settings": {
+      "import-resolver": {
+        "node": {
+          "paths": ["src"]
+        }
+      }
+    },
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
