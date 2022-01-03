@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     category: {
-      type: DataTypes.ENUM('CULTURE & ART', 'SHOPPING', 'NATURE', 'CULINARY', 'HISTORY & HERITAGE', 'ATTRACTION'),
+      type: DataTypes.ENUM(['CULTURE & ART', 'SHOPPING', 'NATURE', 'CULINARY', 'HISTORY', 'ATTRACTIONS']),
       allowNull: false,
     },
     subCategory: {

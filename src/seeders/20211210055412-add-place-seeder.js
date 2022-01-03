@@ -15,7 +15,7 @@ module.exports = {
       {
         id: 'c63e8b16-f2b5-4631-aa95-0fc75f6be59d',
         name: 'Museum of The Asian-African Conference',
-        category: 'HISTORY & HERITAGE',
+        category: 'HISTORY',
         subCategory: 'Museums',
         slug: 'museum-of-the-asian-african-conference',
         images: [

@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
       },
       category: {
-        type: Sequelize.ENUM('CULTURE & ART', 'SHOPPING', 'NATURE', 'CULINARY', 'HISTORY & HERITAGE', 'ATTRACTION'),
+        type: Sequelize.ENUM(['CULTURE & ART', 'SHOPPING', 'NATURE', 'CULINARY', 'HISTORY', 'ATTRACTIONS']),
         allowNull: false,
       },
       subCategory: {
