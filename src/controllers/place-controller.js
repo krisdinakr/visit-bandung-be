@@ -21,7 +21,7 @@ class PlaceController {
       console.log('err', err);
       return next(err);
     }
-  }
+  };
 
   static getBySlug = async (req, res, next) => {
     try {
@@ -37,10 +37,11 @@ class PlaceController {
   static create = async (req, res, next) => {
     try {
       const {
-        name, category, subCategory, images, description,
+        name, category, subCategory, description,
       } = req.body;
+      const { files } = req;
       const result = await PlaceService.create({
-        name, category, subCategory, images, description,
+        name, category, subCategory, files, description,
       });
       return res.status(201).json(Response.success(result));
     } catch (err) {

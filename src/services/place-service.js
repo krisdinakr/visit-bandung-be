@@ -1,6 +1,7 @@
 import { Place } from '../models';
 import { NotFound } from '../utils/errors';
 import createSlug from '../utils/create-slug';
+import firebase from '../utils/firebase';
 
 class PlaceService {
   static getAll = () => Place.findAll();
@@ -16,8 +17,16 @@ class PlaceService {
   };
 
   static create = async ({
-    name, category, subCategory, images, description,
+    name, category, subCategory, files, description,
   }) => {
+    const imagesPromises = files.map((file) => firebase({
+      filename: file.originalname,
+      path: file.path,
+      mimetype: file.mimetype,
+    }));
+
+    const images = await Promise.all(imagesPromises);
+
     const result = await Place.create({
       name,
       category,
